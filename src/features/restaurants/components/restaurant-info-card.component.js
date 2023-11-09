@@ -1,132 +1,101 @@
-import React from "react";
-import styled from "styled-components/native";
+// import React from "react";
+// import { SvgXml } from "react-native-svg";
 
-import { Text, Image, View } from "react-native";
-import { Card } from "react-native-paper";
-import { SvgXml } from "react-native-svg";
-
-import star from"../../../../assets/star";
-import open from "../../../../assets/open";
-
-const RestaurantCard =  styled(Card)`
-    border-radius: 10px;
-    margin: ${(props) => props.theme.space[4]};
-    background-color: ${(props) => props.theme.colors.bg.tertiary};   
-`;
-
-const RestaurantCardCover =  styled(Card.Cover)`
-    padding: ${(props) => props.theme.space[3]};
-    border-radius: 2px;
-    background-color: ${(props) => props.theme.colors.bg.primary};    
-`;
-
-const Title = styled(Text)`
-    font-family: ${(props) => props.theme.fonts.heading };
-    font-size: ${(props) => props.theme.fontSizes.body };   
-    color: ${(props) => props.theme.colors.ui.primary};
-`;
-
-const Address = styled(Text)`
-    font-family: ${(props) => props.theme.fonts.body };
-    font-size: ${(props) => props.theme.fontSizes.caption };
-`;
-
-const Section = styled.View`
-    flex-direction: row;
-    align-items: center;
-`;
-
-const SectionEnd = styled.View`
-    flex: 1;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
-`;
+// import star from"../../../../assets/star";
+// import open from "../../../../assets/open";
+// import { Spacer } from "../../../components/spacer/spacer.component";
+// import { Text } from "../../../components/typography/text.component";
 
 
-
-const Info = styled.View`
-    
-    padding: ${(props) => props.theme.space[3]};
-`
-
-const Rating = styled.View`
-    flex-direction: row;
-    padding-top: ${(props) => props.theme.space[2]};
-    padding-bottom: ${(props) => props.theme.space[2]};
-`;
-
-// const isClosedTemporarily = styled.View`
-//     padding: ${(props) => props.theme.space[1]};
-//     color: ${(props) => props.theme.colors.ui.tertiary};
-`
+// import {
+//     RestaurantCard,
+//     RestaurantCardCover,
+//     Info,
+//     Section,
+//     SectionEnd,
+//     Rating,
+//     Icon,
+//     Address,
+// } from "../../../components/restaurant-info-card.styles";
 
 
-// const Open = styled(SvgXml)`
-//     flex-direction: row;
-// `;
+// // const Icon = styled.Image`
+// //     width: 30px;
+// //     height: 30px;
+// // `;
+
+// // const isClosedTemporarily = styled.View`
+// //     padding: ${(props) => props.theme.space[1]};
+// //     color: ${(props) => props.theme.colors.ui.tertiary};
+// `
+
+
+// // const Open = styled(SvgXml)`
+// //     flex-direction: row;
+// // `;
 
 
 
 
-export const RestaurantInfoCard = ({ restaurant = {} }) => {
-    const {
-        name = 'Subway', 
-        icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
-        photos = [
-        "https://www.halalfoodplaces.com/wp-content/uploads/2021/02/sg1448-subway-nanyang-polytechnic-600x284.png"
-        ],
-        address = "NYP Block A Level 2, #A229",
-        isOpenNow = true,
-        rating = "4",
-        isClosedTemporarily = true,  
-        } = restaurant;
+// export const RestaurantInfoCard = ({ restaurant = {} }) => {
+//     const {
+//         name = 'Subway', 
+//         icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
+//         photos = [
+//         "https://www.halalfoodplaces.com/wp-content/uploads/2021/02/sg1448-subway-nanyang-polytechnic-600x284.png"
+//         ],
+//         address = "NYP Block A Level 2, #A229",
+//         isOpenNow = true,
+//         rating = "4",
+//         isClosedTemporarily = true,  
+//         } = restaurant;
 
     
-    const ratingArray = Array.from(new Array(Math.floor(rating)));
-    console.log(ratingArray);
+//     const ratingArray = Array.from(new Array(Math.floor(rating)));
+//     console.log(ratingArray);
 
-    return (
-        <RestaurantCard elevation={5}>
-            <RestaurantCardCover key={name} source={{  uri: photos[0]}} />
-            <Info>
-                <Title>{name}</Title>
-                <Section>
-                    <Rating>
-                    {ratingArray.map(() => (
-                        <SvgXml xml={star} width={20} height={20} />
-                    ))}
-                    </Rating>
-                <SectionEnd>
-                {isClosedTemporarily && (
-                        <Text variant="label" 
-                         style={{ color: "red" }} >
-                        CLOSED 
-                        </Text>
-                    )}
-                    <View style = {{ paddingLeft: 16 }} />
+//     return (
+//         <RestaurantCard elevation={5}>
+//             <RestaurantCardCover key={name} source={{  uri: photos[0]}} />
+//             <Info>
+//                 <Text variant="label">{name}</Text>
+//                 <Section>
+//                     <Rating>
+//                     {ratingArray.map(() => (
+//                         <SvgXml xml={star} width={20} height={20} />
+//                     ))}
+//                     </Rating>
+//                 <SectionEnd>
+//                 {isClosedTemporarily && (
+//                         <Text variant="error" >
+//                         CLOSED 
+//                         </Text>
+//                     )}
+//                     <Spacer position= "left" size="large" >
 
-                    {/* {isOpenNow && (
-                        // <Text variant="label" style={{ color: "green"}}>
-                        //             OPEN
-                        //     </Text>
-                        )} */}
-{/* ^^^^^^^^^^^^^^^^^ABOVE IS TO ADD IMAGE FOR OPEN WORD EITHER OR FOR PARA BELOW^^^^^^^^^^^^^^^^^^^^^^^^ */}
-                    {isOpenNow && 
-                    <SvgXml xml={open} width={30} height={30} />}
-                    <View style={{paddingLeft: 16,}}/>
-                    <Image style={{ width: 30, height: 30}} source={{uri: icon}}></Image>
+//                     {/* {isOpenNow && (
+//                         // <Text variant="label" style={{ color: "green"}}>
+//                         //             OPEN
+//                         //     </Text>
+//                         )} */}
+// {/* ^^^^^^^^^^^^^^^^^ABOVE IS TO ADD IMAGE FOR OPEN WORD EITHER OR FOR PARA BELOW^^^^^^^^^^^^^^^^^^^^^^^^ */}
+//                     {isOpenNow && 
+//                     <SvgXml xml={open} width={30} height={30} />}
+//                     </Spacer>
+//                     <Spacer position= "left" size="large" >
+//                     <Icon source={{uri: icon}}/>
+//                     </Spacer>
 
-{/* ^^^^^^^^^^^^^^^^^ABOVE IS TO ADD IMAGE FOR OPEN SIGN^^^^^^^^^^^^^^^^^^^^^^^^ */}
+// {/* ^^^^^^^^^^^^^^^^^ABOVE IS TO ADD IMAGE FOR OPEN SIGN^^^^^^^^^^^^^^^^^^^^^^^^ */}
 
 
-                </SectionEnd>
-                </Section>
-                <Address>{address}</Address>           
-            </Info>
-         </RestaurantCard>
-    );
-};
+//                 </SectionEnd>
+//                 </Section>
+//                 <Address>{address}</Address>           
+//             </Info>
+//          </RestaurantCard>
+//     );
+// };
 // ^^^^^^^THIS WORKS my own code======================
 
 
@@ -172,3 +141,68 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
 //   );
 // };
 // // ----------  ^THIS WORKS CNP ED FORM GH------
+
+
+
+import React from "react";
+import { SvgXml } from "react-native-svg";
+
+import { Spacer } from "../../../components/spacer/spacer.component";
+import { Text } from "../../../components/typography/text.component";
+import star from "../../../../assets/star";
+import open from "../../../../assets/open";
+
+import {
+  RestaurantCard,
+  RestaurantCardCover,
+  Info,
+  Section,
+  SectionEnd,
+  Rating,
+  Icon,
+  Address,
+} from "./restaurant-info-card.styles.js";
+
+export const RestaurantInfoCard = ({ restaurant = {} }) => {
+  const {
+    name = "Subway",
+    icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
+    photos = [
+      "https://www.halalfoodplaces.com/wp-content/uploads/2021/02/sg1448-subway-nanyang-polytechnic-600x284.png",
+    ],
+    address = "NYP Block A Level 2, #A229",
+    isOpenNow = true,
+    rating = 4,
+    isClosedTemporarily = true,
+  } = restaurant;
+
+  const ratingArray = Array.from(new Array(Math.floor(rating)));
+
+  return (
+    <RestaurantCard elevation={5}>
+      <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
+      <Info>
+        <Text variant="label">{name}</Text>
+        <Section>
+          <Rating>
+            {ratingArray.map(() => (
+              <SvgXml xml={star} width={20} height={20} />
+            ))}
+          </Rating>
+          <SectionEnd>
+            {isClosedTemporarily && (
+              <Text variant="error">CLOSED</Text>
+            )}
+            <Spacer position="left" size="large">
+              {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
+            </Spacer>
+            <Spacer position="left" size="large">
+              <Icon source={{ uri: icon }} />
+            </Spacer>
+          </SectionEnd>
+        </Section>
+        <Address>{address}</Address>
+      </Info>
+    </RestaurantCard>
+  );
+};
